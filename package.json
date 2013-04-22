@@ -1,0 +1,26 @@
+{
+  "name": "def",
+  "version": "0.0.0",
+  "description": "development environment for frontend",
+  "main": "index.js",
+  "bin": {
+	"def": "bin/def"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.alibaba-inc.com:yuchun/def.git"
+  },
+  "keywords": [
+    "frontend"
+  ],
+  "dependencies": {
+	"jade": ">=0.28.1",
+	"express": ">=3.0.6"
+  },
+  "author": "frontwindysky",
+  "license": "BSD",
+  "readmeFilename": "README.md"
+}

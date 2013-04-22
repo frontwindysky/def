@@ -1,0 +1,33 @@
+extends ../layout/frame
+block content
+	.container
+		.page-header
+			h1 FIDE 唯一的配置
+		form#rootSetting.well.form-horizontal(action="/setting/saveRoot")
+			.control-group
+				label.control-label(for="rootdir") FIDE根目录
+				.controls
+					input#rootDir(type="text",name="rootDir",value="#{root}",placeholder="D:\\\\FIDE(window) or /FIDE(linux)")
+			.control-group
+				.controls
+					button.btn(type="submit") 确定	
+	script(src="/static/kissy-min.js")
+	script
+		KISSY.ready(function(){
+			var S = KISSY,
+				E = S.Event,
+				D = S.DOM,
+				IO = S.IO;
+			E.on('#rootSetting','submit',function(e){
+				e.halt();
+				IO.getScript("/setting/saveRoot?rootDir=" + D.get("#rootDir").value + "&callback=saveRootHandler");
+			})
+		});
+		function saveRootHandler(result){
+			if(result.state === "success"){
+				alert("设置成功");
+			}else{
+				alert(result.msg);
+			}
+		}
+		
