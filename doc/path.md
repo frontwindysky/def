@@ -1,7 +1,7 @@
 ## 目录结构
 ````
 <Root>/
-	.fide
+	.def
 	.proxy
 	<CurrentMonth>/
 		<TaskId>/
@@ -10,7 +10,7 @@
 			demo/
 ````
 
-## .fide
+## .def
 
 ### 说明
 * 存储项目全局配置
