@@ -1,4 +1,4 @@
-![Alt def](./doc/logo.png)
+![Alt def](doc/logo.png)
 ====
 
 Development Environment for Frontend
