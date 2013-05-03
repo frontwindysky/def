@@ -18,7 +18,8 @@
   ],
   "dependencies": {
 	"jade": ">=0.28.1",
-	"express": ">=3.0.6"
+	"express": ">=3.0.6",
+	"underscore": ">=1.4"
   },
   "author": "frontwindysky",
   "license": "BSD",
