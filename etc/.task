@@ -1,6 +1,0 @@
-{
-	"taskname": "需求名称",
-	"assets": ["svnurl1","svnurl2"],
-	"demo": ["svnurl1","svnurl2"],
-	"status": "continue"
-}
