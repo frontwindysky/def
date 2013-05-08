@@ -19,7 +19,8 @@
   "dependencies": {
 	"jade": ">=0.28.1",
 	"express": ">=3.0.6",
-	"underscore": ">=1.4"
+	"underscore": ">=1.4",
+	"async": ">=0.2.8"
   },
   "author": "frontwindysky",
   "license": "BSD",
