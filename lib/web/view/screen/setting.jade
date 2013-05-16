@@ -8,11 +8,10 @@ block content
 			ul.nav.nav-tabs
 				li.active
 					a(href="#tab1",data-toggle="tab") 基础配置
-				li
-					a(href="#tab2",data-toggle="tab") vmarket
-				li
-					a(href="#tab3",data-toggle="tab") abc
-
+				- each plugin in plugins
+					li
+						a(href="##{plugin.name}",data-toggle="tab") #{plugin.name}
+				
 			.tab-content
 				#tab1.tab-pane.active
 					form#rootSetting.form-horizontal(action="/setting/saveRoot")
@@ -23,10 +22,9 @@ block content
 						.control-group
 							.controls
 								button.btn(type="submit") 确定
-				#tab2.tab-pane
-					iframe.plugin-setting(src="http://localhost:8002/setting")
-				#tab3.tab-pane
-					a(href="/plugin/install")iframe.plugin-setting(src="http://localhost:8002/setting")	
+				- each plugin in plugins
+					.tab-pane(id="#{plugin.name}")
+						iframe.plugin-setting(src="http://localhost:#{plugin.port}/#{plugin.settingPage}")
 	script(src="/static/kissy-min.js")
 	script
 		KISSY.ready(function(){
