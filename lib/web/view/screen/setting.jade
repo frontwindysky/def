@@ -7,13 +7,15 @@ block content
 		.tabbable
 			ul.nav.nav-tabs
 				li.active
-					a(href="#tab1",data-toggle="tab") 基础配置
+					a(href="#base",data-toggle="tab") 基础配置
+				li
+					a(href="#proxy",data-toggle="tab") 代理
 				- each plugin in plugins
 					li
 						a(href="##{plugin.name}",data-toggle="tab") #{plugin.name}
 				
 			.tab-content
-				#tab1.tab-pane.active
+				#base.tab-pane.active
 					form#rootSetting.form-horizontal(action="/setting/saveRoot")
 						.control-group
 							label.control-label(for="rootdir") DEF根目录
@@ -22,9 +24,18 @@ block content
 						.control-group
 							.controls
 								button.btn(type="submit") 确定
+				#proxy.tab-pane
+					form
+						span 代理设置
 				- each plugin in plugins
-					.tab-pane(id="#{plugin.name}")
-						iframe.plugin-setting(src="http://localhost:#{plugin.port}/#{plugin.settingPage}")
+					.tab-pane.pluginPanel(id="#{plugin.name}")
+						a.async.hidden(href="/plugin/install?name=#{plugin.name}",id="J_PluginInstallBtn#{plugin.name}") 安装
+						&nbsp;&nbsp;&nbsp;
+						a.async.hidden(href="/plugin/update?name=#{plugin.name}",id="J_PluginUpdateBtn#{plugin.name}") 更新
+						br
+						input(type="checkbox",id="autoStart_#{plugin.name}",name="autoStart",value="#{plugin.name}")
+						span 自动启动
+						iframe.plugin-setting.hidden(src="http://localhost:#{plugin.port}#{plugin.settingPage}",id="settingPage#{plugin.name}")
 	script(src="/static/kissy-min.js")
 	script
 		KISSY.ready(function(){
@@ -35,11 +46,40 @@ block content
 			E.on('#rootSetting','submit',function(e){
 				e.halt();
 				IO.getScript("/setting/saveRoot?rootDir=" + D.get("#rootDir").value + "&callback=saveRootHandler");
-			})
+			});
+			E.on('.async',"click",function(e){
+				e.halt();
+				IO.getScript(e.target.href + "&callback=pluginInstallHandler");
+			});
+			S.all('.pluginPanel').each(function(o){
+				IO.getScript("/plugin/state?name="+o[0].id+"&callback=showPlugin")
+			});
 		});
+		var S = KISSY,
+			E = S.Event,
+			D = S.DOM;
+		function showPlugin(result){
+			if(result.status=="unavailable"){
+				D.removeClass("#J_PluginInstallBtn"+result.name,'hidden');
+			}else{
+				if(result.hasLatest){
+					D.removeClass("#J_PluginUpdateBtn"+result.name,'hidden');
+				}
+				D.removeClass("#settingPage"+result.name,'hidden');
+			}
+		}
 		function saveRootHandler(result){
 			if(result.state === "success"){
 				alert("设置成功");
+			}else{
+				alert(result.msg);
+			}
+		}
+		function pluginInstallHandler(result){
+			if(result.status === "success"){
+				alert(result.pluginName + ":安装成功");
+				D.hide("#J_PluginInstallBtn"+result.pluginName);
+				D.show("#settingPage"+result.pluginName);
 			}else{
 				alert(result.msg);
 			}
