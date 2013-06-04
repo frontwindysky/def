@@ -17,12 +17,15 @@ block content
 			.tab-content
 				#base.tab-pane.active
 					form#rootSetting.form-horizontal(action="/setting/saveRoot")
+						.control-group.info
+							.controls
+								button.btn.btn-info(type="button") 更新
+								span.help-inline DEF有最新版本
 						.control-group
 							label.control-label(for="rootdir") DEF根目录
 							.controls
 								input#rootDir(type="text",name="rootDir",value="#{root}",placeholder="D:\\\\FIDE(window) or /FIDE(linux)")
-						.control-group
-							.controls
+							.form-actions
 								button.btn(type="submit") 确定
 				#proxy.tab-pane
 					form
@@ -75,13 +78,22 @@ block content
 				alert(result.msg);
 			}
 		}
-		function pluginInstallHandler(result){
-			if(result.status === "success"){
-				alert(result.pluginName + ":安装成功");
-				D.hide("#J_PluginInstallBtn"+result.pluginName);
-				D.show("#settingPage"+result.pluginName);
+		function pluginInstallHandler(plugin){
+			if(plugin.status == "ok"){
+				alert(plugin.name + ":安装成功");
+				D.hide("#J_PluginInstallBtn" + plugin.name);
+				D.show("#settingPage" + plugin.name);
 			}else{
-				alert(result.msg);
+				alert("安装失败");
+			}
+		}
+		function pluginUpdateHandler(plugin){
+			if(plugin.status == "ok"){
+				alert(plugin.name + ":更新成功");
+				D.hide("#J_PluginUpdateBtn" + plugin.name);
+				D.show("#settingPage" + plugin.name);
+			}else{
+				alert("更新失败");
 			}
 		}
 		
