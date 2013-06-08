@@ -28,17 +28,19 @@ block content
 					button 更新到服务器
 					button 完成
 				#code.tab-pane
-					input(type="text",value="http://gitlab.alibaba-inc.com/yuchun/a.git")
-					button pull
-					button add
-					button commit
-					button push
-					button 手动操作
+					input.input-xxlarge(type="text",value="http://gitlab.alibaba-inc.com/yuchun/a.git")
+					button.btn pull
+					button.btn add
+					button.btn commit
+					button.btn push
+					button.btn 手动操作
 					br
-					input(type="text",value="http://svn.dev.taobao.net/xxx/")
-					button update
-					button commit
-					button 手动操作
+					input.input-xxlarge(type="text",value="http://svn.dev.taobao.net/xxx/")
+					button.btn update
+					button.btn commit
+					button.btn 手动操作
+					br
+					button.btn.btn-primary +添加代码库
 				- each plugin in plugins
 					.tab-pane(id="#{plugin.name}")
 						iframe.plugin-setting(src="http://localhost:#{plugin.port}#{plugin.workingPage}")

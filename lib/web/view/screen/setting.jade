@@ -36,8 +36,6 @@ block content
 						&nbsp;&nbsp;&nbsp;
 						a.async.hidden(href="/plugin/update?name=#{plugin.name}",id="J_PluginUpdateBtn#{plugin.name}") 更新
 						br
-						input(type="checkbox",id="autoStart_#{plugin.name}",name="autoStart",value="#{plugin.name}")
-						span 自动启动
 						iframe.plugin-setting.hidden(src="http://localhost:#{plugin.port}#{plugin.settingPage}",id="settingPage#{plugin.name}")
 	script(src="/static/kissy-min.js")
 	script

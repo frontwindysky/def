@@ -4,24 +4,14 @@ div#nav.navbar.navbar-fixed-top.narbar-inverse
 			a.brand(href="/") DEF
 			div.nav-collapse.collapse
 				ul.nav
-					- if (active == 'index')
-						li.active
-							a(href="/") Home
-					- else
-						li
-							a(href="/") Home
-					- if (active == 'doc')
-						li.active
-							a(href="/doc") Document
-					- else
-						li
-							a(href="/doc") Document
 					- if (active == 'setting')
 						li.active
+							i.icon-wrench
 							a(href="/setting") Setting
 					- else
 						li
 							a(href="/setting") Setting
+								i.icon-wrench
 					- if (active == 'task')
 						li.active
 							a(href="/task") Task
