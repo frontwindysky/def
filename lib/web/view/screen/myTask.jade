@@ -1,0 +1,31 @@
+extends ../layout/myTask
+block main
+	#currentlist
+		ul
+			li.th
+				span 任务名称
+				span.folder 目录位置
+				span.control 操作
+			- each task in tasklist
+				li
+					a(href="/task/detail?task=#{task.path}") #{task.taskname}
+					span.folder #{task.path}
+					span.control
+						a(href="") 完成
+	.pagination.pagination-right
+		ul.pager
+			li
+				a(href="/task/page/1") 1
+			li.active
+				span 2 	
+
+	script
+		(function(S){
+			var D = S.DOM,
+				E = S.Event;
+			function resize(){
+				D.height("#currentlist",D.viewportHeight()-136);
+			}
+			S.ready(resize);
+			E.on(window,'resize',resize);
+		})(KISSY);

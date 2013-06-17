@@ -1,8 +1,379 @@
 body{
-	padding-top:100px;
+	padding-top:0px;
+	font-family:"microsoft yahei";
 }
+ul{
+	margin:0px;
+}
+li{
+	list-style:none;
+}
+
+/*control:nav*/
+#taskNav{
+	border-top:1px solid #aaa;
+	border-bottom:1px solid #aaa;
+	background:#333;
+	min-width:600px;
+	height:40px;
+	padding-left:120px;
+}
+#logo{
+	position:absolute;
+	left:10px;
+	right:10px;
+	font-size:18px;
+	font-weight:700;
+	line-height:40px;
+	display:block;
+	width:100px;
+	text-align:center;
+	color:#fff;
+}
+#taskNav li{
+	float:left;
+	list-style:none;
+	margin-right:10px;
+	padding:0px 10px;
+	line-height:40px;
+	background:#000;
+	border-left:1px solid #777;
+	border-right:1px solid #666;
+}
+#taskNav li:hover{
+	background:#444;
+}
+#taskNav li.current{
+	line-height:41px;
+	border-left:1px solid #999;
+	border-right:1px solid #888;
+	background:#666;
+}
+#taskNav li a{
+	color:#ccc;
+}
+#taskNav li a:hover{
+	text-decoration:none;
+}
+#taskNav li i{
+	margin-left:5px;
+}
+#taskNav li.current a{
+	color:#fff;
+}
+
+
+/*layout-myTask*/
+.layout-myTask{
+	border-top:10px solid #666;
+	background:#f6f6f6;
+	overflow:hidden;
+	position:relative;
+	border-bottom:10px solid #666;
+}
+.layout-myTask .mainBar{
+	margin-left:250px;
+	min-width:400px;
+}
+.layout-myTask .sideBar{
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:250px;
+	height:1000px;
+	background:#ccc;
+	border-right:1px solid #666;
+}
+
+/*layout-taskDetail*/
+
+.layout-taskDetail{
+	width:100%;
+	min-width:960px;
+	background:#f6f6f6;
+	border-top:10px solid #666;
+	border-bottom:10px solid #666;
+}
+.layout-taskDetail .sidebar{
+	width:200px;
+	float:left;
+	min-height:500px;
+}
+.layout-taskDetail .mainbar{
+	position:relative;
+	width:auto;
+	background:#fff;
+	border-left:2px solid #888;
+	border-right:2px solid #aaa;
+	margin-left:200px;
+	margin-right:180px;
+	min-height:500px;
+}
+.layout-taskDetail .extbar{
+	width:180px;
+	float:right;
+	min-height:500px;
+}
+
+
+/*page:myTask*/
+
+#currentlist{
+	min-height:200px;
+	overflow-y:auto;
+}
+#currentlist ul{
+	margin:0px;
+	padding:5px;
+}
+#currentlist li.th{
+	background:#ddd;
+	border-bottom:1px dashed #aaa;
+}
+#currentlist li{
+	list-style:none;
+	line-height:30px;
+	border-bottom:1px solid #ddd;
+	padding:0px 10px;
+	position:relative;
+}
+#currentlist li:hover{
+	background:#eee;
+}
+#currentlist li .folder{
+	position:absolute;
+	right:0px;
+	width:200px;
+	overflow:hidden;
+}
+#currentlist li .control{
+	position:absolute;
+	right:200px;
+	width:200px;
+}
+
+.pagination{
+	margin:0px;
+}
+.pagination ul li.active>span{
+	color:#fff;
+	background:#48f;
+}
+.pager{
+	margin:0px 10px;
+}
+/*control:newTask*/
+
+#newTask{
+	border-top:1px solid #ccc;
+	padding:10px;
+	border-bottom:1px solid #666;
+	border-right:1px solid #ccc;
+	background:#aaa;
+}
+
+/*control:taskListNav*/
+
+#listNav ul{
+	background:#999;
+	border-top:1px solid #bbb;
+	border-bottom:1px solid #555;
+	overflow:hidden;
+	margin:0px;
+	padding-left:30px;
+	line-height:30px;
+	_zoom:1;
+}
+#listNav li{
+	list-style:none;
+	float:left;
+	margin-right:20px;
+	padding:5px 20px;
+}
+#listNav li.current{
+	background:#666;
+	border-left:1px solid #aaa;
+	border-right:1px solid #aaa;
+}
+#listNav li a{
+	color:#fff;
+}
+
+
+
+
+/*mode:taskControl*/
+#taskControl{
+	padding:10px;
+	background:#ccc;
+	border-bottom:1px solid #666;
+	border-top:1px solid #eee;
+	min-height:100px;
+}
+
+/*mode:taskCode*/
+#taskCode{
+	background:#ddd;
+	padding:10px 2px;
+	padding-right:0px;
+	border-bottom:1px solid #aaa;
+	border-top:1px solid #fff;
+}
+
+#taskCode li {
+	padding:3px 10px;
+	border-bottom:1px dashed #aaa;
+	border-top:1px solid #fff;
+	word-break:break-all;
+	font-size:13px;
+}
+
+#taskCode a:hover{
+	text-decoration:none;
+}
+#taskCode li:hover,
+#taskCode li.current{
+	background:#888;
+	border:1px solid #666;
+	border-right:0px;
+}
+#taskCode li:hover a,
+#taskCode li.current a{
+	color:#fff;
+}
+
+#taskCode input{
+	width:160px;
+}
+/*mode:codeControl*/
+#codeControl{
+	background:#ccc;
+	padding:10px;
+	border-bottom:1px solid #999;
+	border-top:1px solid #eee;
+}
+
+/*mode:filePath*/
+#filePath{
+	background:#eee;
+	padding:5px 10px;
+	border-top:1px solid #fff;
+	border-bottom:1px dashed #ccc;
+}
+#filePath ol{
+	margin:0px;
+	overflow:hidden;
+	_zoom:1;
+}
+#filePath li{
+	float:left;
+	margin-right:10px;
+}
+
+/*mode:filePanel*/
+#filePanel{
+	background:#fff;
+	padding:10px 10px 40px;
+	height:500px;
+	overflow-y:auto;
+}
+#filePanel .folder,
+#filePanel .js,
+#filePanel .css,
+#filePanel .txt,
+#filePanel .exe,
+#filePanel .img,
+#filePanel .x{
+	display:block;
+	width:35px;
+	height:35px;
+	background:transparent url("./icon/folder.png") no-repeat center center;
+}
+#filePanel .js{	background-image:url("./icon/js.png");}
+#filePanel .css{	background-image:url("./icon/css.png");}
+#filePanel .txt{	background-image:url("./icon/txt.png");}
+#filePanel .exe{	background-image:url("./icon/exe.png");}
+#filePanel .img{	background-image:url("./icon/img.png");}
+#filePanel .x{	background-image:url("./icon/x.png");}
+
+#filePanel .listView li{
+	padding:5px;
+	height:35px;
+	overflow:hidden;
+	_zoom:1;
+}
+#filePanel .listView li:hover{
+	background:#f6f6f6;
+}
+#filePanel .listView li .fileIcon,
+#filePanel .listView li .fileName,
+#filePanel .listView li .fileSize,
+#filePanel .listView li .fileDate{
+	float:left;
+	display:block;
+	width:35px;
+	height:35px;
+	line-height:35px;
+	text-align:center;
+	vertical-align:bottom;
+	overflow:hidden;
+}
+#filePanel .listView li .fileName{
+	width:200px;
+	text-align:left;
+}
+#filePanel .listView li .fileSize{
+	width:100px;
+	text-align:left;
+}
+#filePanel .listView li .fileDate{
+	float:right;
+	width:120px;
+	text-align:left;
+}
+
+/*mode:logPanel*/
+#logPanel{
+	background:#efefef;
+	height:500px;
+	overflow-y:auto;
+}
+#logPanel li{
+	padding:3px 6px;
+	font-size:12px;
+	border-bottom:1px solid #ddd;
+	font-family:tahoma;
+	word-break:break-all;
+}
+
+/*mode:viewPanel*/
+#viewPanel{
+	background:#ddd;
+	position:absolute;
+	width:100%;
+	bottom:0px;
+	right:0px;
+	border-top:1px solid #999;
+}
+#viewPanel ul{
+	float:right;
+}
+#viewPanel ul li{
+	float:right;
+	border-left:1px solid #fff;
+	border-right:1px solid #999;
+	padding:3px 10px;
+}
+#viewPanel ul li.current{
+	background:#fff;
+	position:relative;
+	top:-1px;
+}
+
+/*other*/
 .plugin-setting{
 	border:0px;
 	width:100%;
 	height:500px;
 }
+

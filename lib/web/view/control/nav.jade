@@ -1,21 +1,12 @@
-div#nav.navbar.navbar-fixed-top.narbar-inverse
-	div.navbar-inner
-		div.container
-			a.brand(href="/") DEF
-			div.nav-collapse.collapse
-				ul.nav
-					- if (active == 'setting')
-						li.active
-							i.icon-wrench
-							a(href="/setting") Setting
-					- else
-						li
-							a(href="/setting") Setting
-								i.icon-wrench
-					- if (active == 'task')
-						li.active
-							a(href="/task") Task
-					- else
-						li
-							a(href="/task") Task
-					
+#taskNav
+	a#logo(href="") DEF
+	ul
+		- if (page == 'taskList')
+			li.current
+				a(href="/task") 我的任务
+		- else
+			li
+				a(href="/task") 我的任务
+		- if (page == "taskDetail")
+			li.current
+				a(href="#") 任务：#{task.taskname}
