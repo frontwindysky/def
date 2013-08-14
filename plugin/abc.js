@@ -1,8 +1,7 @@
 module.exports = {
-	name : "abc",		//插件名称 
-	description : "构建工具，包括编译，打包，压缩",	//插件描述
-	start : "abc -p <%= port %>",
-	settingPage : "/setting",
-	workingPage : "/working"
-	
+	name : "ABC",		//插件名称
+	npm : "abc-web",
+	description : "Assets构建(编译，打包，压缩)",	//插件描述
+	start : "abc",
+	port : "8008"
 }

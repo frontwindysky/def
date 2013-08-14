@@ -1,7 +1,150 @@
 extends ../layout/frame
 block content
 	.container
-		.page-header
-			h1 欢迎来到DEF！
-		.well
-			p DEF（前端集成开发环境），让前端开发更简单，愉快
+		#applist
+			- each p in plugin
+				div(class="#{p.name} app cols2",id="#{p.name}")
+					h3 #{p.name}
+					.detail
+						p #{p.description}
+						a.btn.start(href="/plugin/start?name=#{p.name}") 启动
+						a.btn.upgrade(href="/plugin/upgrade?name=#{p.name}") 更新
+						p.status >检测中...
+			- each p in customPluginlist
+				div(class="#{p.name} app #{p.type}",id="#{p.name}")
+					h3 
+						a.startCustom(href="/plugin/startCustom?name=#{p.name}") #{p.name}
+					a.del(href="/plugin/delCustom?name=#{p.name}") 删除
+				
+			.app.blankbg.cols2
+				h4 添加
+				a.addbtn.apps(data-key="apps") 本地程序
+				a.addbtn.link(data-key="link") 链接
+				a.addbtn.cmd(data-key="cmd") 命令
+				a.addbtn.iframe(data-key="iframe") 嵌入网页
+				form#addPlugin.formbox
+					p
+						label(for="name") 名称 
+						input(name="name",value="",type="text")
+					p#cmd.key
+						label(for="cmd",id="") cmd
+						input(name="cmd",value="",type="text")
+					p#link.key
+						label(for="link",id="") 链接
+						input(name="link",value="",type="text")
+					p#apps.key
+						label(for="apps",id="") path
+						input(name="apps",value="",type="text")
+					p#iframe.key
+						label(for="iframe",id="") url
+						input(name="iframe",value="",type="text")
+					p
+						button(name="npm",id="addSubmit",type="submit") 添加
+						button(name="npm",id="addCancel") 取消
+				
+
+	script.
+		var D = KISSY.DOM,
+		E = KISSY.Event;
+		function nothing(r){
+		}
+		function startPluginHandler(result){
+			if(result.result === 'success'){
+				KISSY.one("#" + result.name).one(".status").html("已启动").show();
+				KISSY.one("#" + result.name).one(".start").html("打开");
+			}else{
+				alert("失败");
+			}
+		}
+		function upgradePluginHandler(result){
+			if(result.result === 'success'){
+				KISSY.one("#" + result.name).one(".status").html("已更新").show();
+				KISSY.one("#" + result.name).one(".upgrade").hide();
+
+			}else{
+				alert("失败");
+			}
+		}
+		function addPluginHandler(result){
+			if(result.result === 'success'){
+				var p = result.plugin;
+				D.hide("#addPlugin .key");
+				D.hide("#addPlugin");
+				KISSY.all("#addPlugin input").val();
+				D.insertBefore(KISSY.one('<div class="' + p.name + ' app ' + p.type + '" id="' + p.name + '">'+
+						'<h3>'+
+							'<a class="startCustom" href="/plugin/startCustom?name=' + p.name + '">'+
+								p.name+
+							'</a>'+
+						'</h3>'+
+						'<a class="del" href="/plugin/delCustom?name=' + p.name + '">'+
+							'删除'+
+						'</a>'+
+					'</div>'),"#applist .blankbg");
+			}else{
+				alert("失败");
+			}
+		}
+		
+		function delCustomHandler(result){
+			if(result.result === 'success'){
+				D.remove("#"+result.name);
+			}else{
+				alert("失败");
+			}
+		}
+		function checkStatusHandler(pluginlist){
+			for (p in pluginlist){
+				if (pluginlist[p].checked){
+					D.show("#"+pluginlist[p].name + " .start");
+				}
+				if(pluginlist[p].hasLatest){
+					D.show("#"+pluginlist[p].name + " .upgrade");
+				}
+				D.hide("#"+pluginlist[p].name + " .status")
+			}
+		}
+		(function(S){
+			var D = S.DOM,
+				E = S.Event,
+				IO = S.IO;
+			E.on("#applist .start","click",function(e){
+				e.halt();
+				S.one(e.target).parent().one(".status").html("启动中...").show();
+				IO.getScript(this.href + "&callback=startPluginHandler&t="+(+new Date()));
+			});
+			E.on("#applist .upgrade","click",function(e){
+				e.halt();
+				S.one(e.target).parent().one(".status").html("更新中...").show();
+				IO.getScript(this.href + "&callback=upgradePluginHandler&t="+(+new Date()));
+			});
+			E.on("#applist .addbtn","click",function(e){
+				e.halt();
+				D.show("#addPlugin");
+				D.show("#"+S.one(e.target).attr('data-key'));
+			});
+			E.on("#addCancel","click",function(e){
+				e.halt();
+				D.hide("#addPlugin .key");
+				D.hide("#addPlugin");
+			});
+			E.on("#addPlugin","submit",function(e){
+				e.halt();
+				IO.getScript("/plugin/add?callback=addPluginHandler&"+IO.serialize("#addPlugin input")+"&t=" + (+new Date()))
+			});
+
+			E.on("#applist","click",function(e){
+				if (D.hasClass(e.target,'startCustom')){
+					e.halt();
+					IO.getScript(e.target.href + "&callback=nothing&t="+(+new Date()));
+				}else if (D.hasClass(e.target,'del')){
+					e.halt();
+					IO.getScript(e.target.href + "&callback=delCustomHandler&t="+(+new Date()));
+				}
+			});
+			S.ready(function(){
+				IO.getScript("/plugin/checkStatus?callback=checkStatusHandler&t=" + (+new Date()))
+			})
+		})(KISSY);
+		
+			

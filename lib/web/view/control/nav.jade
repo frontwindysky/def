@@ -1,12 +1,1 @@
-#taskNav
-	a#logo(href="") DEF
-	ul
-		- if (page == 'taskList')
-			li.current
-				a(href="/task") 我的任务
-		- else
-			li
-				a(href="/task") 我的任务
-		- if (page == "taskDetail")
-			li.current
-				a(href="#") 任务：#{task.taskname}
+a#logo(href="") DEF

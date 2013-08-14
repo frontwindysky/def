@@ -1,3 +1,24 @@
+html{
+	height:100%;
+	background-color:#0FE0FC;
+	/*background:-webkit-gradient(radial, 50% 50%, 1500, 0% 100%, 0, from(#ffffff), to(rgba(50,204,255,0)), color-stop(70%, #0175FC));*/
+background-image: linear-gradient(left bottom, #0FE0FC 32%, #6199FA 57%, #A6CAFF 83%, #53FCBE 92%);
+background-image: -o-linear-gradient(left bottom, #0FE0FC 32%, #6199FA 57%, #A6CAFF 83%, #53FCBE 92%);
+background-image: -moz-linear-gradient(left bottom, #0FE0FC 32%, #6199FA 57%, #A6CAFF 83%, #53FCBE 92%);
+background-image: -webkit-linear-gradient(left bottom, #0FE0FC 32%, #6199FA 57%, #A6CAFF 83%, #53FCBE 92%);
+background-image: -ms-linear-gradient(left bottom, #0FE0FC 32%, #6199FA 57%, #A6CAFF 83%, #53FCBE 92%);
+
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	right top,
+	color-stop(0.02, #ffffff),
+	color-stop(0.32, #0FE0FC),
+	color-stop(0.57, #6199FA),
+	color-stop(0.83, #A6CAFF),
+	color-stop(0.92, #53FCBE)
+);
+}
 body{
 	padding-top:0px;
 	font-family:"microsoft yahei";
@@ -11,24 +32,238 @@ li{
 
 /*control:nav*/
 #taskNav{
-	border-top:1px solid #aaa;
-	border-bottom:1px solid #aaa;
-	background:#333;
 	min-width:600px;
 	height:40px;
 	padding-left:120px;
 }
 #logo{
-	position:absolute;
-	left:10px;
-	right:10px;
-	font-size:18px;
-	font-weight:700;
-	line-height:40px;
+	margin-top:40px;
+	margin-left:10%;
+	font-size:100px;
+	font-weight:400;
 	display:block;
-	width:100px;
-	text-align:center;
+	font-family:"Microsoft Yi Baiti";
 	color:#fff;
+	text-decoration:none;
+}
+#logo b{
+	font-size:16px;
+	font-family:"microsoft yahei";
+}
+#applist{
+	margin-left:10%;
+	margin-top:20px;
+}
+#applist .app{
+	width:120px;
+	height:120px;
+	color:#fff;
+	font-size:20px;
+	text-align:center;
+	vertical-align:center;
+	float:left;
+	margin-right:10px;
+	margin-bottom:10px;
+	position:relative;
+	overflow:hidden;
+	cursor:pointer;
+}
+#applist .app h3{
+	font-family:"Microsoft Yi Baiti";
+	position:absolute;
+	font-size:55px;
+	font-weight:400;
+	padding:10px;
+	margin:0px;
+	right:0px;
+	bottom:0px;
+	color:#fff;
+}
+#applist .app h3 a{
+	font-family:"Microsoft Yi Baiti";
+	font-size:35px;
+	font-weight:400;
+	color:#fff;
+	text-decoration:none;
+}
+#applist .app .detail{
+	position:absolute;
+	text-align:left;
+	padding:10px;
+	right:0px;
+	left:0px;
+	bottom:0px;
+	top:0px;
+}
+#applist .app .detail p{
+	font-size:14px;
+	margin:0px;
+}
+#applist .app .detail .status{
+	font-size:12px;
+	margin:0px;
+	background:#000;
+	color:#0f0;
+	padding:0px 5px;
+	position:absolute;
+	bottom:5px;
+}
+#applist .app .detail .btn{
+	margin-right:20px;
+	color:#fff;
+	font-size:14px;
+	text-decoration:underline;
+	display:none;
+}
+#applist .app .detail .btn:hover{
+	color:#ff0;
+}
+#applist .app .del{
+	color:#fff;
+	position:absolute;
+	right:5px;
+	top:5px;
+	font-size:12px;
+}
+#applist .cols2{
+	width:250px;
+}
+#applist .blankbg{
+	background:#999;
+	background:rgba(96,96,96,0.5);
+}
+#applist .blankbg h4{
+	margin:0px;
+	line-height:120px;
+}
+#applist .blankbg a{
+	height:60px;
+	line-height:60px;
+	position:absolute;
+	font-size:12px;
+	display:none;
+}
+#applist .blankbg:hover a{
+	display:block;
+}
+#applist .blankbg a:hover{
+	color:#f60;
+}
+#applist .blankbg .apps{
+	background:#B42B23;
+	left:0px;
+	right:65%;
+	top:0px;
+}
+#applist .blankbg .link{
+	background:#2652A0;
+	right:0px;
+	left:65%;
+	top:0px;
+}
+#applist .blankbg .iframe{
+	background:#23630A;
+	left:0px;
+	right:65%;
+	bottom:0px;
+}
+#applist .blankbg .cmd{
+	background:#910788;
+	right:0px;
+	left:65%;
+	bottom:0px;
+}
+#applist .formbox{
+	position:absolute;
+	left:0px;
+	right:0px;
+	top:0px;
+	bottom:0px;
+	font-size:14px;
+	background:#333;
+	display:none;
+}
+#applist .formbox .key{
+	display:none;
+}
+#applist .formbox p{
+	margin:11px;
+}
+#applist .formbox label{
+	width:50px;
+	display:inline-block;
+}
+.ABC,.apps{
+	background-color:#B42B23;
+	background-image: linear-gradient(left , #B42B23 12%, #D8453F 85%);
+	background-image: -o-linear-gradient(left , #B42B23 12%, #D8453F 85%);
+	background-image: -moz-linear-gradient(left , #B42B23 12%, #D8453F 85%);
+	background-image: -webkit-linear-gradient(left , #B42B23 12%, #D8453F 85%);
+	background-image: -ms-linear-gradient(left , #B42B23 12%, #D8453F 85%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left top,
+		right top,
+		color-stop(0.12, #B42B23),
+		color-stop(0.85, #D8453F)
+	);
+}
+.Vmarket{
+	background-color:#910788;
+	background-image: linear-gradient(left , #910788 15%, #B521B0 84%);
+	background-image: -o-linear-gradient(left , #910788 15%, #B521B0 84%);
+	background-image: -moz-linear-gradient(left , #910788 15%, #B521B0 84%);
+	background-image: -webkit-linear-gradient(left , #910788 15%, #B521B0 84%);
+	background-image: -ms-linear-gradient(left , #910788 15%, #B521B0 84%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left top,
+		right top,
+		color-stop(0.15, #910788),
+		color-stop(0.84, #B521B0)
+	);
+}
+.Proxy,.cmd{
+	background-color:#23630A;
+	background-image: linear-gradient(left , #23630A 0%, #3F8124 65%, #5F9B41 100%);
+	background-image: -o-linear-gradient(left , #23630A 0%, #3F8124 65%, #5F9B41 100%);
+	background-image: -moz-linear-gradient(left , #23630A 0%, #3F8124 65%, #5F9B41 100%);
+	background-image: -webkit-linear-gradient(left , #23630A 0%, #3F8124 65%, #5F9B41 100%);
+	background-image: -ms-linear-gradient(left , #23630A 0%, #3F8124 65%, #5F9B41 100%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left top,
+		right top,
+		color-stop(0, #23630A),
+		color-stop(1, #3F8124)
+	);
+}
+.Gitlab,.link{
+	background-color:#2652A0;
+	background-image: linear-gradient(left , #2652A0 10%, #4173C0 76%);
+	background-image: -o-linear-gradient(left , #2652A0 10%, #4173C0 76%);
+	background-image: -moz-linear-gradient(left , #2652A0 10%, #4173C0 76%);
+	background-image: -webkit-linear-gradient(left , #2652A0 10%, #4173C0 76%);
+	background-image: -ms-linear-gradient(left , #2652A0 10%, #4173C0 76%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left top,
+		right top,
+		color-stop(0.1, #2652A0),
+		color-stop(0.76, #4173C0)
+	);
+}
+#applist .addnew{
+	width:246px;
+	height:246px;
+	background:rgba(255,255,255,0.5);
+	border:2px dashed #aaa;
+	color:#666;
+	font-size:14px;
 }
 #taskNav li{
 	float:left;
