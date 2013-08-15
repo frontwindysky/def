@@ -1,6 +1,6 @@
 {
   "name": "tbdef",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "development environment for frontend",
   "main": "index.js",
   "bin": {
