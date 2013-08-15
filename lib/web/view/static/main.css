@@ -225,7 +225,7 @@ li{
 		color-stop(0.84, #B521B0)
 	);
 }
-.Proxy,.cmd{
+.HttpX,.cmd{
 	background-color:#23630A;
 	background-image: linear-gradient(left , #23630A 0%, #3F8124 65%, #5F9B41 100%);
 	background-image: -o-linear-gradient(left , #23630A 0%, #3F8124 65%, #5F9B41 100%);
