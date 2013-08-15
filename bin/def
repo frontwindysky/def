@@ -1,7 +1,9 @@
 #! /usr/bin/env node
 
+/*初始化插件*/
 var plugin = require('../lib/app/plugin');
 plugin.init();
 
+/*启动服务*/
 var web = require('../lib/web');
 web.start();
