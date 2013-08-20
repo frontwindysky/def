@@ -1,6 +1,6 @@
 {
   "name": "tbdef",
-  "version": "0.2.9",
+  "version": "0.3.0",
   "description": "development environment for frontend",
   "main": "index.js",
   "bin": {
@@ -17,9 +17,10 @@
     "frontend"
   ],
   "dependencies": {
-	"jade": "=0.28.1",
-	"express": "=3.0.6",
-	"underscore": "=1.4"
+	"jade" : "=0.28.1",
+	"express" : "=3.0.6",
+	"underscore" : "=1.4",
+	"http-proxy" : "=0.10.3"
   },
   "author": "frontwindysky",
   "license": "BSD",
